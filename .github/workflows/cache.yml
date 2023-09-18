@@ -8,10 +8,14 @@ jobs:
 
 
     steps:
-      - name: Cache local Maven repository
-        uses: actions/cache@v2
-        with:
-          path: ~/cache/maven
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+      - name: test
+        run: |
+          echo $(java --version)
+          echo $(mvn --version)
+      # - name: Cache local Maven repository
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ~/cache/
+      #     key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-maven-
