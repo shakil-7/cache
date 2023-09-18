@@ -12,8 +12,28 @@ jobs:
         run: |
           echo $(java --version)
           echo $(mvn --version)
-      - name: Cache local Maven repository
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          echo $(npm --version)
+          
+      # - name: Cache local Maven repository
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ~/.m2/repository
+      #     key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+      
+      # - name: Install npm with or without cache
+      #   id: npm-cache
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ~/.npm
+      #     key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+      
+      # - name: install and cached npm
+      #   if: steps.npm-cache.outputs.cache-hit != 'true'
+      #   run: |
+      #     sudo npm install
+      #     npm --version
+          
+      # - name: install and cached npm
+      #   if: steps.npm-cache.outputs.cache-hit == 'true'
+      #   run: |
+      #     npm --version
