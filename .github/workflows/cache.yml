@@ -18,7 +18,7 @@ jobs:
         uses: actions/cache/@v2
         id: cache-ngrok
         with:
-          path: ~/snap/ngrok
+          path: ~/.cache/snap/ngrok
           key: ${{ runner.os }}-ngrok-2
           
       # - name: check if already cached
@@ -27,5 +27,5 @@ jobs:
       
       - name: checked install ngrok version
         run: |
-          echo ${{steps.cache-ngrok-outputs.cache-hit}}
+          echo "is cached hit = " ${{steps.cache-ngrok-outputs.cache-hit}}
           echo $(ngrok --version)
