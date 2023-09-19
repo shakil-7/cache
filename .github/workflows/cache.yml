@@ -15,10 +15,26 @@ jobs:
           # echo $(npm --version)
           # echo $(vlc --version)
           # echo "aws version = : " $(aws --version)
-          eho $(ngrok --version)
+          echo $(ngrok --version)
 
           # sudo apt update && sudo apt upgrade -y
 
+          - name: cache ngrok
+            uses: actions/cache/restore@v2
+            id: cache-ngrok
+            with:
+              path: ~/.ngrok
+              key: ${{ runner.os }}-ngrok-${{ hashFiles('**') }}
+          
+          # - name: check if already cached
+            # if: steps.cache-ngrok-outputs.cache-hit != 'true'
+            # run: sudo apt install ngrok
+
+          - name: checked install ngrok version
+            run: |
+              echo $(ngrok --version)
+              echo ${{ runner.os }}-ngrok-${{ hashFiles('**') }}
+      
           
 
       # - name: Cache local Maven repository
