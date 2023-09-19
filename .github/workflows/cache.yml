@@ -21,9 +21,9 @@ jobs:
           key: ${{ runner.os }}-ngrok-${{ hashFiles('**') }}
           
       # 
-      - name: check if already cached
-        if: steps.cache-ngrok-outputs.cache-hit != 'true'
-        run: sudo snap install ngrok
+      # - name: check if already cached
+      #   if: steps.cache-ngrok-outputs.cache-hit != 'true'
+      #   run: sudo snap install ngrok
       
       - name: checked install ngrok version
         run: |
