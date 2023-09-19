@@ -18,8 +18,10 @@ jobs:
         uses: actions/cache@v2
         id: cache
         with:
-          path: ~/.cache/ljflksjdflksdjf
-          key: ${{ runner.os }}-ngrok-6
+          path: |
+            ~/snap/ngrok
+            ~/work/_temp
+          key: ${{ runner.os }}-ngrok-7
           
       - name: check if already cached
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
