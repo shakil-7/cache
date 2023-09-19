@@ -13,7 +13,13 @@ jobs:
           echo $(java --version)
           echo $(mvn --version)
           echo $(npm --version)
+
+          echo $(vlc --version)
+
+          # sudo apt update && sudo apt upgrade -y
+
           
+
       # - name: Cache local Maven repository
       #   uses: actions/cache@v2
       #   with:
