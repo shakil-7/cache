@@ -30,4 +30,4 @@ jobs:
       - uses: actions/cache/save@v3
         with:
           path: ~/.m2/repository
-          key: ${{ steps.maven-cache.outputs.cache-primary-key }}
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
