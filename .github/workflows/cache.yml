@@ -10,53 +10,21 @@ jobs:
     steps:
       - name: test
         run: |
-          # echo $(java --version)
-          # echo $(mvn --version)
-          # echo $(npm --version)
-          # echo $(vlc --version)
-          # echo "aws version = : " $(aws --version)
           echo $(ngrok --version)
-
           # sudo apt update && sudo apt upgrade -y
-
-          - name: cache ngrok
-            uses: actions/cache/restore@v2
-            id: cache-ngrok
-            with:
-              path: ~/.ngrok
-              key: ${{ runner.os }}-ngrok-${{ hashFiles('**') }}
+      - name: cache ngrok
+        uses: actions/cache/restore@v2
+        id: cache-ngrok
+        with:
+          path: ~/.ngrok
+          key: ${{ runner.os }}-ngrok-${{ hashFiles('**') }}
           
-          # - name: check if already cached
-            # if: steps.cache-ngrok-outputs.cache-hit != 'true'
-            # run: sudo apt install ngrok
-
-          - name: checked install ngrok version
-            run: |
-              echo $(ngrok --version)
-              echo ${{ runner.os }}-ngrok-${{ hashFiles('**') }}
+      # 
+      # - name: check if already cached
+      #   if: steps.cache-ngrok-outputs.cache-hit != 'true'
+      #   run: sudo apt install ngrok
       
-          
-
-      # - name: Cache local Maven repository
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: ~/.m2/repository
-      #     key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-      
-      # - name: Install npm with or without cache
-      #   id: npm-cache
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: ~/.npm
-      #     key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-      
-      # - name: install and cached npm
-      #   if: steps.npm-cache.outputs.cache-hit != 'true'
-      #   run: |
-      #     sudo npm install
-      #     npm --version
-          
-      # - name: install and cached npm
-      #   if: steps.npm-cache.outputs.cache-hit == 'true'
-      #   run: |
-      #     npm --version
+      - name: checked install ngrok version
+        run: |
+          echo $(ngrok --version)
+          echo ${{ runner.os }}-ngrok-${{ hashFiles('**') }}
