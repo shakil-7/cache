@@ -14,10 +14,10 @@ jobs:
           # sudo apt update && sudo apt upgrade -y
           
       - name: cache ngrok
-        uses: actions/cache/restore@v3
+        uses: actions/cache/@v3
         id: cache-ngrok
         with:
-          path: ~/.ngrok
+          path: ~/.ngrokWrongPath
           key: ${{ runner.os }}-ngrok-${{ hashFiles('**') }}
           
       # 
