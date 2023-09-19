@@ -16,8 +16,8 @@ jobs:
         uses: actions/cache/@v3
         id: cache-ngrok
         with:
-          path: ~/.ngrok
-          key: ${{ runner.os }}-ngrok-${{ hashFiles('**') }}
+          path: ~/snap/ngrok
+          key: ${{ runner.os }}-ngrok-${{ hashFiles('ngrok') }}
           
       - name: check if already cached
         if: steps.cache-ngrok-outputs.cache-hit != 'true'
@@ -26,7 +26,3 @@ jobs:
       - name: checked install ngrok version
         run: |
           echo $(ngrok --version)
-          echo ${{ runner.os }}-ngrok-${{ hashFiles('**') }}
-          cd ~/snap
-          pwd
-          ls -a
