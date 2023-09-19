@@ -23,7 +23,7 @@ jobs:
       # 
       - name: check if already cached
         if: steps.cache-ngrok-outputs.cache-hit != 'true'
-        run: sudo apt install ngrok
+        run: snap install ngrok
       
       - name: checked install ngrok version
         run: |
