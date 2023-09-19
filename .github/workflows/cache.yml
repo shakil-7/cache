@@ -15,16 +15,17 @@ jobs:
           echo $(ngrok --version)
           
       - name: cache ngrok
-        uses: actions/cache@v2
+        uses: actions/cache/restore@v2
         id: cache
         with:
+          path: ~/
           key: ${{ runner.os }}-ngrok-10
           
       - name: check if already cached
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: sudo snap install ngrok
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        run: echo ${{ steps.cache.outputs.cache-hit }}
       
-      - name: checked install ngrok version
-        run: |
-          echo "is cached hit = " ${steps.cache-ngrok-outputs.cache-hit}
-          echo $(ngrok --version)
+      # - name: checked install ngrok version
+      #   run: |
+      #     echo "is cached hit = " ${{ runner.os }}
+      #     echo $(ngrok --version)
