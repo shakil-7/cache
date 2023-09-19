@@ -31,4 +31,4 @@ jobs:
           echo ${{ runner.os }}-ngrok-${{ hashFiles('**') }}
           cd ~/
           pwd
-          ls
+          ls -a
