@@ -9,24 +9,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
-      - name: test
-        run: |
-          echo $(ngrok --version)
-          
-      - name: cache ngrok
+                
+      - name: Cache local Maven repository
         uses: actions/cache@v2
-        id: cache
+        id: maven-cache
         with:
-          path: ~/
-          key: ${{ runner.os }}-ngrok-10
-          
-      - name: check if already cached
-        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
-        run: |
-          echo $({ steps.cache.outputs.cache-hit })
-          # echo $(steps.cache.outputs.cache-hit)
-      # - name: checked install ngrok version
-      #   run: |
-      #     echo "is cached hit = " ${{ runner.os }}
-      #     echo $(ngrok --version)
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: is miss ?
+        if: steps.maven-cache.outputs.cache-hit != 'true'
+        run: echo "miss hit"
+        
+      - name: is hit ?
+        if: steps.maven-cache.outputs.cache-hit == 'true'
+        run: echo "hit"
