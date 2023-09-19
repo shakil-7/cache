@@ -11,19 +11,17 @@ jobs:
       - name: test
         run: |
           echo $(ngrok --version)
-          # sudo apt update && sudo apt upgrade -y
           
       - name: cache ngrok
         uses: actions/cache/@v3
         id: cache-ngrok
         with:
-          path: ~/.profile
+          path: ~/.ngrok
           key: ${{ runner.os }}-ngrok-${{ hashFiles('**') }}
           
-      # 
-      # - name: check if already cached
-      #   if: steps.cache-ngrok-outputs.cache-hit != 'true'
-      #   run: sudo snap install ngrok
+      - name: check if already cached
+        if: steps.cache-ngrok-outputs.cache-hit != 'true'
+        run: sudo snap install ngrok
       
       - name: checked install ngrok version
         run: |
