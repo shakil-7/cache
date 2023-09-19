@@ -10,11 +10,11 @@ jobs:
     steps:
       - name: test
         run: |
-          echo $(java --version)
-          echo $(mvn --version)
-          echo $(npm --version)
-
-          echo $(vlc --version)
+          # echo $(java --version)
+          # echo $(mvn --version)
+          # echo $(npm --version)
+          # echo $(vlc --version)
+          echo "aws version = : " $(aws --version)
 
           # sudo apt update && sudo apt upgrade -y
 
