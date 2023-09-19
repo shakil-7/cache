@@ -24,8 +24,8 @@ jobs:
       - name: check if already cached
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         run: |
-          echo ${ steps.cache.outputs.cache-hit }
-          echo $(steps.cache.outputs.cache-hit)
+          echo { steps.cache.outputs.cache-hit }
+          # echo $(steps.cache.outputs.cache-hit)
       # - name: checked install ngrok version
       #   run: |
       #     echo "is cached hit = " ${{ runner.os }}
