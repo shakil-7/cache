@@ -29,5 +29,5 @@ jobs:
         run: |
           echo $(ngrok --version)
           echo ${{ runner.os }}-ngrok-${{ hashFiles('**') }}
-          cd ~/
+          cd ~/runner/
           ls
