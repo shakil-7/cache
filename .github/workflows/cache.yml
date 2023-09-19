@@ -18,12 +18,14 @@ jobs:
         uses: actions/cache/@v2
         id: cache-ngrok
         with:
-          path: ~/.cache/snap/ngrok
-          key: ${{ runner.os }}-ngrok-2
+          path: 
+            ~/snap/ngrok
+            ~/work/_temp
+          key: ${{ runner.os }}-ngrok-3
           
-      # - name: check if already cached
-        # if:  != 'true'
-        # run: sudo snap install ngrok
+      - name: check if already cached
+        if: steps.cache-ngrok-outputs.cache-hit != 'true'
+        run: sudo snap install ngrok
       
       - name: checked install ngrok version
         run: |
