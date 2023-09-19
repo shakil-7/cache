@@ -14,7 +14,8 @@ jobs:
           # echo $(mvn --version)
           # echo $(npm --version)
           # echo $(vlc --version)
-          echo "aws version = : " $(aws --version)
+          # echo "aws version = : " $(aws --version)
+          eho $(ngrok --version)
 
           # sudo apt update && sudo apt upgrade -y
 
