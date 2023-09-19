@@ -26,5 +26,5 @@ jobs:
       
       - name: checked install ngrok version
         run: |
-          echo "is cached hit = " ${{steps.cache-ngrok-outputs.cache-hit}}
+          echo "is cached hit = " ${steps.cache-ngrok-outputs.cache-hit}
           echo $(ngrok --version)
