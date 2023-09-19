@@ -15,7 +15,7 @@ jobs:
           echo $(ngrok --version)
           
       - name: cache ngrok
-        uses: actions/cache/restore@v2
+        uses: actions/cache@v2
         id: cache
         with:
           path: ~/
