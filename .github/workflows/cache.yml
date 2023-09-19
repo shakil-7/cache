@@ -12,8 +12,9 @@ jobs:
         run: |
           echo $(ngrok --version)
           # sudo apt update && sudo apt upgrade -y
+          
       - name: cache ngrok
-        uses: actions/cache/restore@v2
+        uses: actions/cache/restore@v3
         id: cache-ngrok
         with:
           path: ~/.ngrok
