@@ -17,7 +17,7 @@ jobs:
         uses: actions/cache/@v3
         id: cache-ngrok
         with:
-          path: ~/.ngrokWrongPath
+          path: ~/.m2
           key: ${{ runner.os }}-ngrok-${{ hashFiles('**') }}
           
       # 
