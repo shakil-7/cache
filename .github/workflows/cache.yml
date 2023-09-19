@@ -22,7 +22,7 @@ jobs:
           key: ${{ runner.os }}-ngrok-6
           
       - name: check if already cached
-        if: steps.cache-outputs.cache-hit != 'true'
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         run: sudo snap install ngrok
       
       - name: checked install ngrok version
